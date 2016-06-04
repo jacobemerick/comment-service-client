@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -31,18 +31,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace Jacobemerick\CommentService\Api;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \Jacobemerick\CommentService\Configuration;
+use \Jacobemerick\CommentService\ApiClient;
+use \Jacobemerick\CommentService\ApiException;
+use \Jacobemerick\CommentService\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -52,13 +52,13 @@ class DefaultApi
 
     /**
      * API Client
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \Jacobemerick\CommentService\ApiClient instance of the ApiClient
      */
     protected $apiClient;
   
     /**
      * Constructor
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \Jacobemerick\CommentService\ApiClient|null $apiClient The api client to use
      */
     function __construct($apiClient = null)
     {
@@ -72,7 +72,7 @@ class DefaultApi
   
     /**
      * Get API client
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \Jacobemerick\CommentService\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -81,7 +81,7 @@ class DefaultApi
   
     /**
      * Set the API client
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \Jacobemerick\CommentService\ApiClient $apiClient set the API client
      * @return DefaultApi
      */
     public function setApiClient(ApiClient $apiClient)
@@ -98,8 +98,8 @@ class DefaultApi
      *
      * @param int $page Results page to return (optional)
      * @param int $per_page Results per response (optional)
-     * @return \Jacobemerick/CommentService\Commenter[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Commenter[]
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommenters($page = null, $per_page = null)
     {
@@ -115,8 +115,8 @@ class DefaultApi
      *
      * @param int $page Results page to return (optional)
      * @param int $per_page Results per response (optional)
-     * @return Array of \Jacobemerick/CommentService\Commenter[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Commenter[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommentersWithHttpInfo($page = null, $per_page = null)
     {
@@ -157,28 +157,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Commenter[]'
+                $headerParams, '\Jacobemerick\CommentService\Model\Commenter[]'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Commenter[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Commenter[]', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Commenter[]', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Commenter[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -192,9 +197,9 @@ class DefaultApi
      *
      * 
      *
-     * @param \Jacobemerick/CommentService\Body $body  (optional)
-     * @return \Jacobemerick/CommentService\Commenter
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @param \Jacobemerick\CommentService\Model\Body $body  (optional)
+     * @return \Jacobemerick\CommentService\Model\Commenter
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function createCommenter($body = null)
     {
@@ -208,9 +213,9 @@ class DefaultApi
      *
      * 
      *
-     * @param \Jacobemerick/CommentService\Body $body  (optional)
-     * @return Array of \Jacobemerick/CommentService\Commenter, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @param \Jacobemerick\CommentService\Model\Body $body  (optional)
+     * @return Array of \Jacobemerick\CommentService\Model\Commenter, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function createCommenterWithHttpInfo($body = null)
     {
@@ -247,28 +252,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Commenter'
+                $headerParams, '\Jacobemerick\CommentService\Model\Commenter'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Commenter', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Commenter', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Commenter', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Commenter', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -283,8 +293,8 @@ class DefaultApi
      * 
      *
      * @param string $commenter_id Commenter identifier. (required)
-     * @return \Jacobemerick/CommentService\Commenter
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Commenter
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommenter($commenter_id)
     {
@@ -299,8 +309,8 @@ class DefaultApi
      * 
      *
      * @param string $commenter_id Commenter identifier. (required)
-     * @return Array of \Jacobemerick/CommentService\Commenter, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Commenter, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommenterWithHttpInfo($commenter_id)
     {
@@ -345,28 +355,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Commenter'
+                $headerParams, '\Jacobemerick\CommentService\Model\Commenter'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Commenter', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Commenter', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Commenter', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Commenter', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -384,8 +399,8 @@ class DefaultApi
      * @param int $per_page Results per response (optional)
      * @param string $domain Domain to restrict comments to (optional)
      * @param string $path Path to restrict comments to (optional)
-     * @return \Jacobemerick/CommentService\Comment[]
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Comment[]
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getComments($page = null, $per_page = null, $domain = null, $path = null)
     {
@@ -403,8 +418,8 @@ class DefaultApi
      * @param int $per_page Results per response (optional)
      * @param string $domain Domain to restrict comments to (optional)
      * @param string $path Path to restrict comments to (optional)
-     * @return Array of \Jacobemerick/CommentService\Comment[], HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Comment[], HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommentsWithHttpInfo($page = null, $per_page = null, $domain = null, $path = null)
     {
@@ -453,28 +468,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Comment[]'
+                $headerParams, '\Jacobemerick\CommentService\Model\Comment[]'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Comment[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Comment[]', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Comment[]', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Comment[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -488,9 +508,9 @@ class DefaultApi
      *
      * 
      *
-     * @param \Jacobemerick/CommentService\Body1 $body  (optional)
-     * @return \Jacobemerick/CommentService\Comment
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @param \Jacobemerick\CommentService\Model\Body1 $body  (optional)
+     * @return \Jacobemerick\CommentService\Model\Comment
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function createComment($body = null)
     {
@@ -504,9 +524,9 @@ class DefaultApi
      *
      * 
      *
-     * @param \Jacobemerick/CommentService\Body1 $body  (optional)
-     * @return Array of \Jacobemerick/CommentService\Comment, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @param \Jacobemerick\CommentService\Model\Body1 $body  (optional)
+     * @return Array of \Jacobemerick\CommentService\Model\Comment, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function createCommentWithHttpInfo($body = null)
     {
@@ -543,28 +563,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Comment'
+                $headerParams, '\Jacobemerick\CommentService\Model\Comment'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Comment', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Comment', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Comment', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Comment', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -579,8 +604,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return \Jacobemerick/CommentService\Comment
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Comment
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getComment($comment_id)
     {
@@ -595,8 +620,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return Array of \Jacobemerick/CommentService\Comment, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Comment, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function getCommentWithHttpInfo($comment_id)
     {
@@ -641,28 +666,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Comment'
+                $headerParams, '\Jacobemerick\CommentService\Model\Comment'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Comment', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Comment', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Comment', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Comment', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -677,8 +707,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return \Jacobemerick/CommentService\Comment
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Comment
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function replaceComment($comment_id)
     {
@@ -693,8 +723,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return Array of \Jacobemerick/CommentService\Comment, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Comment, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function replaceCommentWithHttpInfo($comment_id)
     {
@@ -739,28 +769,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Comment'
+                $headerParams, '\Jacobemerick\CommentService\Model\Comment'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Comment', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Comment', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Comment', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Comment', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -776,7 +811,7 @@ class DefaultApi
      *
      * @param string $comment_id Comment identifier. (required)
      * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function deleteComment($comment_id)
     {
@@ -792,7 +827,7 @@ class DefaultApi
      *
      * @param string $comment_id Comment identifier. (required)
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function deleteCommentWithHttpInfo($comment_id)
     {
@@ -837,6 +872,11 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -850,7 +890,7 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -865,8 +905,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return \Jacobemerick/CommentService\Comment
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Jacobemerick\CommentService\Model\Comment
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function updateComment($comment_id)
     {
@@ -881,8 +921,8 @@ class DefaultApi
      * 
      *
      * @param string $comment_id Comment identifier. (required)
-     * @return Array of \Jacobemerick/CommentService\Comment, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return Array of \Jacobemerick\CommentService\Model\Comment, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
     public function updateCommentWithHttpInfo($comment_id)
     {
@@ -927,28 +967,33 @@ class DefaultApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, $method,
                 $queryParams, $httpBody,
-                $headerParams, '\Jacobemerick/CommentService\Comment'
+                $headerParams, '\Jacobemerick\CommentService\Model\Comment'
             );
             
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick/CommentService\Comment', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Jacobemerick\CommentService\Model\Comment', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Comment', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Comment', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             default:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick/CommentService\Error', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Jacobemerick\CommentService\Model\Error', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }

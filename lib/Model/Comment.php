@@ -1,11 +1,11 @@
 <?php
 /**
- * Body1
+ * Comment
  *
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -31,27 +31,31 @@
  * Do not edit the class manually.
  */
 
-namespace Jacobemerick/CommentService;
+namespace Jacobemerick\CommentService\Model;
 
 use \ArrayAccess;
 /**
- * Body1 Class Doc Comment
+ * Comment Class Doc Comment
  *
  * @category    Class
  * @description 
- * @package     Swagger\Client
+ * @package     Jacobemerick\CommentService
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Body1 implements ArrayAccess
+class Comment implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        
+        'id' => 'string',
+        'commenter' => '\Jacobemerick\CommentService\Model\Commenter',
+        'body' => 'string',
+        'url' => 'string',
+        'thread' => 'string'
     );
   
     /** 
@@ -59,7 +63,11 @@ class Body1 implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        
+        'id' => 'id',
+        'commenter' => 'commenter',
+        'body' => 'body',
+        'url' => 'url',
+        'thread' => 'thread'
     );
   
     /**
@@ -67,7 +75,11 @@ class Body1 implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        
+        'id' => 'setId',
+        'commenter' => 'setCommenter',
+        'body' => 'setBody',
+        'url' => 'setUrl',
+        'thread' => 'setThread'
     );
   
     /**
@@ -75,9 +87,43 @@ class Body1 implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        
+        'id' => 'getId',
+        'commenter' => 'getCommenter',
+        'body' => 'getBody',
+        'url' => 'getUrl',
+        'thread' => 'getThread'
     );
   
+    
+    /**
+      * $id 
+      * @var string
+      */
+    protected $id;
+    
+    /**
+      * $commenter 
+      * @var \Jacobemerick\CommentService\Model\Commenter
+      */
+    protected $commenter;
+    
+    /**
+      * $body 
+      * @var string
+      */
+    protected $body;
+    
+    /**
+      * $url 
+      * @var string
+      */
+    protected $url;
+    
+    /**
+      * $thread 
+      * @var string
+      */
+    protected $thread;
     
 
     /**
@@ -87,8 +133,117 @@ class Body1 implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            
+            $this->id = $data["id"];
+            $this->commenter = $data["commenter"];
+            $this->body = $data["body"];
+            $this->url = $data["url"];
+            $this->thread = $data["thread"];
         }
+    }
+    
+    /**
+     * Gets id
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+  
+    /**
+     * Sets id
+     * @param string $id 
+     * @return $this
+     */
+    public function setId($id)
+    {
+        
+        $this->id = $id;
+        return $this;
+    }
+    
+    /**
+     * Gets commenter
+     * @return \Jacobemerick\CommentService\Model\Commenter
+     */
+    public function getCommenter()
+    {
+        return $this->commenter;
+    }
+  
+    /**
+     * Sets commenter
+     * @param \Jacobemerick\CommentService\Model\Commenter $commenter 
+     * @return $this
+     */
+    public function setCommenter($commenter)
+    {
+        
+        $this->commenter = $commenter;
+        return $this;
+    }
+    
+    /**
+     * Gets body
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+  
+    /**
+     * Sets body
+     * @param string $body 
+     * @return $this
+     */
+    public function setBody($body)
+    {
+        
+        $this->body = $body;
+        return $this;
+    }
+    
+    /**
+     * Gets url
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+  
+    /**
+     * Sets url
+     * @param string $url 
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        
+        $this->url = $url;
+        return $this;
+    }
+    
+    /**
+     * Gets thread
+     * @return string
+     */
+    public function getThread()
+    {
+        return $this->thread;
+    }
+  
+    /**
+     * Sets thread
+     * @param string $thread 
+     * @return $this
+     */
+    public function setThread($thread)
+    {
+        
+        $this->thread = $thread;
+        return $this;
     }
     
     /**

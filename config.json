@@ -1,0 +1,7 @@
+{
+    "invokerPackage": "Jacobemerick\\CommentService",
+    "modelPackage": "Jacobemerick\\CommentService\\Model",
+    "apiPackage": "Jacobemerick\\CommentService\\Api",
+    "packagePath": "",
+    "composerProjectName": "comment-service-client"
+}

@@ -1,11 +1,11 @@
 <?php
 /**
- * Comment
+ * Error
  *
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -31,31 +31,31 @@
  * Do not edit the class manually.
  */
 
-namespace Jacobemerick/CommentService;
+namespace Jacobemerick\CommentService\Model;
 
 use \ArrayAccess;
 /**
- * Comment Class Doc Comment
+ * Error Class Doc Comment
  *
  * @category    Class
  * @description 
- * @package     Swagger\Client
+ * @package     Jacobemerick\CommentService
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Comment implements ArrayAccess
+class Error implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'string',
-        'commenter' => '\Jacobemerick/CommentService\Commenter',
-        'body' => 'string',
-        'url' => 'string',
-        'thread' => 'string'
+        'type' => 'string',
+        'status' => 'int',
+        'code' => 'string',
+        'message' => 'string',
+        'context' => 'object'
     );
   
     /** 
@@ -63,11 +63,11 @@ class Comment implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'commenter' => 'commenter',
-        'body' => 'body',
-        'url' => 'url',
-        'thread' => 'thread'
+        'type' => 'type',
+        'status' => 'status',
+        'code' => 'code',
+        'message' => 'message',
+        'context' => 'context'
     );
   
     /**
@@ -75,11 +75,11 @@ class Comment implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'commenter' => 'setCommenter',
-        'body' => 'setBody',
-        'url' => 'setUrl',
-        'thread' => 'setThread'
+        'type' => 'setType',
+        'status' => 'setStatus',
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'context' => 'setContext'
     );
   
     /**
@@ -87,43 +87,43 @@ class Comment implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'commenter' => 'getCommenter',
-        'body' => 'getBody',
-        'url' => 'getUrl',
-        'thread' => 'getThread'
+        'type' => 'getType',
+        'status' => 'getStatus',
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'context' => 'getContext'
     );
   
     
     /**
-      * $id 
+      * $type 
       * @var string
       */
-    protected $id;
+    protected $type;
     
     /**
-      * $commenter 
-      * @var \Jacobemerick/CommentService\Commenter
+      * $status 
+      * @var int
       */
-    protected $commenter;
+    protected $status;
     
     /**
-      * $body 
+      * $code 
       * @var string
       */
-    protected $body;
+    protected $code;
     
     /**
-      * $url 
+      * $message 
       * @var string
       */
-    protected $url;
+    protected $message;
     
     /**
-      * $thread 
-      * @var string
+      * $context 
+      * @var object
       */
-    protected $thread;
+    protected $context;
     
 
     /**
@@ -133,116 +133,119 @@ class Comment implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->commenter = $data["commenter"];
-            $this->body = $data["body"];
-            $this->url = $data["url"];
-            $this->thread = $data["thread"];
+            $this->type = $data["type"];
+            $this->status = $data["status"];
+            $this->code = $data["code"];
+            $this->message = $data["message"];
+            $this->context = $data["context"];
         }
     }
     
     /**
-     * Gets id
+     * Gets type
      * @return string
      */
-    public function getId()
+    public function getType()
     {
-        return $this->id;
+        return $this->type;
     }
   
     /**
-     * Sets id
-     * @param string $id 
+     * Sets type
+     * @param string $type 
      * @return $this
      */
-    public function setId($id)
+    public function setType($type)
     {
-        
-        $this->id = $id;
+        $allowed_values = array("error");
+        if (!in_array($type, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'error'");
+        }
+        $this->type = $type;
         return $this;
     }
     
     /**
-     * Gets commenter
-     * @return \Jacobemerick/CommentService\Commenter
+     * Gets status
+     * @return int
      */
-    public function getCommenter()
+    public function getStatus()
     {
-        return $this->commenter;
+        return $this->status;
     }
   
     /**
-     * Sets commenter
-     * @param \Jacobemerick/CommentService\Commenter $commenter 
+     * Sets status
+     * @param int $status 
      * @return $this
      */
-    public function setCommenter($commenter)
+    public function setStatus($status)
     {
         
-        $this->commenter = $commenter;
+        $this->status = $status;
         return $this;
     }
     
     /**
-     * Gets body
+     * Gets code
      * @return string
      */
-    public function getBody()
+    public function getCode()
     {
-        return $this->body;
+        return $this->code;
     }
   
     /**
-     * Sets body
-     * @param string $body 
+     * Sets code
+     * @param string $code 
      * @return $this
      */
-    public function setBody($body)
+    public function setCode($code)
     {
         
-        $this->body = $body;
+        $this->code = $code;
         return $this;
     }
     
     /**
-     * Gets url
+     * Gets message
      * @return string
      */
-    public function getUrl()
+    public function getMessage()
     {
-        return $this->url;
+        return $this->message;
     }
   
     /**
-     * Sets url
-     * @param string $url 
+     * Sets message
+     * @param string $message 
      * @return $this
      */
-    public function setUrl($url)
+    public function setMessage($message)
     {
         
-        $this->url = $url;
+        $this->message = $message;
         return $this;
     }
     
     /**
-     * Gets thread
-     * @return string
+     * Gets context
+     * @return object
      */
-    public function getThread()
+    public function getContext()
     {
-        return $this->thread;
+        return $this->context;
     }
   
     /**
-     * Sets thread
-     * @param string $thread 
+     * Sets context
+     * @param object $context 
      * @return $this
      */
-    public function setThread($thread)
+    public function setContext($context)
     {
         
-        $this->thread = $thread;
+        $this->context = $context;
         return $this;
     }
     

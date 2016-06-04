@@ -1,11 +1,11 @@
 <?php
 /**
- * Error
+ * Body
  *
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -31,31 +31,27 @@
  * Do not edit the class manually.
  */
 
-namespace Jacobemerick/CommentService;
+namespace Jacobemerick\CommentService\Model;
 
 use \ArrayAccess;
 /**
- * Error Class Doc Comment
+ * Body Class Doc Comment
  *
  * @category    Class
  * @description 
- * @package     Swagger\Client
+ * @package     Jacobemerick\CommentService
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Error implements ArrayAccess
+class Body implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'type' => 'string',
-        'status' => 'int',
-        'code' => 'string',
-        'message' => 'string',
-        'context' => 'object'
+        
     );
   
     /** 
@@ -63,11 +59,7 @@ class Error implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'type' => 'type',
-        'status' => 'status',
-        'code' => 'code',
-        'message' => 'message',
-        'context' => 'context'
+        
     );
   
     /**
@@ -75,11 +67,7 @@ class Error implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'type' => 'setType',
-        'status' => 'setStatus',
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'context' => 'setContext'
+        
     );
   
     /**
@@ -87,43 +75,9 @@ class Error implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'type' => 'getType',
-        'status' => 'getStatus',
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'context' => 'getContext'
+        
     );
   
-    
-    /**
-      * $type 
-      * @var string
-      */
-    protected $type;
-    
-    /**
-      * $status 
-      * @var int
-      */
-    protected $status;
-    
-    /**
-      * $code 
-      * @var string
-      */
-    protected $code;
-    
-    /**
-      * $message 
-      * @var string
-      */
-    protected $message;
-    
-    /**
-      * $context 
-      * @var object
-      */
-    protected $context;
     
 
     /**
@@ -133,120 +87,8 @@ class Error implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->type = $data["type"];
-            $this->status = $data["status"];
-            $this->code = $data["code"];
-            $this->message = $data["message"];
-            $this->context = $data["context"];
+            
         }
-    }
-    
-    /**
-     * Gets type
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-  
-    /**
-     * Sets type
-     * @param string $type 
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $allowed_values = array("error");
-        if (!in_array($type, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'error'");
-        }
-        $this->type = $type;
-        return $this;
-    }
-    
-    /**
-     * Gets status
-     * @return int
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-  
-    /**
-     * Sets status
-     * @param int $status 
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        
-        $this->status = $status;
-        return $this;
-    }
-    
-    /**
-     * Gets code
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-  
-    /**
-     * Sets code
-     * @param string $code 
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        
-        $this->code = $code;
-        return $this;
-    }
-    
-    /**
-     * Gets message
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-  
-    /**
-     * Sets message
-     * @param string $message 
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        
-        $this->message = $message;
-        return $this;
-    }
-    
-    /**
-     * Gets context
-     * @return object
-     */
-    public function getContext()
-    {
-        return $this->context;
-    }
-  
-    /**
-     * Sets context
-     * @param object $context 
-     * @return $this
-     */
-    public function setContext($context)
-    {
-        
-        $this->context = $context;
-        return $this;
     }
     
     /**

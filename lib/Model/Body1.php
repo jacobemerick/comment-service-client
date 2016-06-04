@@ -1,11 +1,11 @@
 <?php
 /**
- * Body
+ * Body1
  *
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  Jacobemerick\CommentService
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -31,20 +31,20 @@
  * Do not edit the class manually.
  */
 
-namespace Jacobemerick/CommentService;
+namespace Jacobemerick\CommentService\Model;
 
 use \ArrayAccess;
 /**
- * Body Class Doc Comment
+ * Body1 Class Doc Comment
  *
  * @category    Class
  * @description 
- * @package     Swagger\Client
+ * @package     Jacobemerick\CommentService
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Body implements ArrayAccess
+class Body1 implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
