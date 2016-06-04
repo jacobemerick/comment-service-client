@@ -3,5 +3,6 @@
     "modelPackage": "Jacobemerick\\CommentService\\Model",
     "apiPackage": "Jacobemerick\\CommentService\\Api",
     "packagePath": "",
+    "composerVendorName": "jacobemerick",
     "composerProjectName": "comment-service-client"
 }
