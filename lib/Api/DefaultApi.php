@@ -397,14 +397,15 @@ class DefaultApi
      *
      * @param int $page Results page to return (optional)
      * @param int $per_page Results per response (optional)
+     * @param string $order Comma-separated list of order options (optional)
      * @param string $domain Domain to restrict comments to (optional)
      * @param string $path Path to restrict comments to (optional)
      * @return \Jacobemerick\CommentService\Model\Comment[]
      * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
-    public function getComments($page = null, $per_page = null, $domain = null, $path = null)
+    public function getComments($page = null, $per_page = null, $order = null, $domain = null, $path = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->getCommentsWithHttpInfo ($page, $per_page, $domain, $path);
+        list($response, $statusCode, $httpHeader) = $this->getCommentsWithHttpInfo ($page, $per_page, $order, $domain, $path);
         return $response; 
     }
 
@@ -416,12 +417,13 @@ class DefaultApi
      *
      * @param int $page Results page to return (optional)
      * @param int $per_page Results per response (optional)
+     * @param string $order Comma-separated list of order options (optional)
      * @param string $domain Domain to restrict comments to (optional)
      * @param string $path Path to restrict comments to (optional)
      * @return Array of \Jacobemerick\CommentService\Model\Comment[], HTTP status code, HTTP response headers (array of strings)
      * @throws \Jacobemerick\CommentService\ApiException on non-2xx response
      */
-    public function getCommentsWithHttpInfo($page = null, $per_page = null, $domain = null, $path = null)
+    public function getCommentsWithHttpInfo($page = null, $per_page = null, $order = null, $domain = null, $path = null)
     {
         
   
@@ -447,6 +449,10 @@ class DefaultApi
         
         if ($per_page !== null) {
             $queryParams['per_page'] = $this->apiClient->getSerializer()->toQueryValue($per_page);
+        }// query params
+        
+        if ($order !== null) {
+            $queryParams['order'] = $this->apiClient->getSerializer()->toQueryValue($order);
         }// query params
         
         if ($domain !== null) {
