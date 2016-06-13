@@ -54,6 +54,7 @@ class Comment implements ArrayAccess
         'id' => 'string',
         'commenter' => '\Jacobemerick\CommentService\Model\Commenter',
         'body' => 'string',
+        'date' => '\DateTime',
         'url' => 'string',
         'thread' => 'string'
     );
@@ -66,6 +67,7 @@ class Comment implements ArrayAccess
         'id' => 'id',
         'commenter' => 'commenter',
         'body' => 'body',
+        'date' => 'date',
         'url' => 'url',
         'thread' => 'thread'
     );
@@ -78,6 +80,7 @@ class Comment implements ArrayAccess
         'id' => 'setId',
         'commenter' => 'setCommenter',
         'body' => 'setBody',
+        'date' => 'setDate',
         'url' => 'setUrl',
         'thread' => 'setThread'
     );
@@ -90,6 +93,7 @@ class Comment implements ArrayAccess
         'id' => 'getId',
         'commenter' => 'getCommenter',
         'body' => 'getBody',
+        'date' => 'getDate',
         'url' => 'getUrl',
         'thread' => 'getThread'
     );
@@ -114,6 +118,12 @@ class Comment implements ArrayAccess
     protected $body;
     
     /**
+      * $date 
+      * @var \DateTime
+      */
+    protected $date;
+    
+    /**
       * $url 
       * @var string
       */
@@ -136,6 +146,7 @@ class Comment implements ArrayAccess
             $this->id = $data["id"];
             $this->commenter = $data["commenter"];
             $this->body = $data["body"];
+            $this->date = $data["date"];
             $this->url = $data["url"];
             $this->thread = $data["thread"];
         }
@@ -201,6 +212,27 @@ class Comment implements ArrayAccess
     {
         
         $this->body = $body;
+        return $this;
+    }
+    
+    /**
+     * Gets date
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+  
+    /**
+     * Sets date
+     * @param \DateTime $date 
+     * @return $this
+     */
+    public function setDate($date)
+    {
+        
+        $this->date = $date;
         return $this;
     }
     
