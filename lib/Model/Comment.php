@@ -56,6 +56,7 @@ class Comment implements ArrayAccess
         'body' => 'string',
         'date' => '\DateTime',
         'url' => 'string',
+        'reply_to' => 'string',
         'thread' => 'string'
     );
   
@@ -69,6 +70,7 @@ class Comment implements ArrayAccess
         'body' => 'body',
         'date' => 'date',
         'url' => 'url',
+        'reply_to' => 'reply_to',
         'thread' => 'thread'
     );
   
@@ -82,6 +84,7 @@ class Comment implements ArrayAccess
         'body' => 'setBody',
         'date' => 'setDate',
         'url' => 'setUrl',
+        'reply_to' => 'setReplyTo',
         'thread' => 'setThread'
     );
   
@@ -95,6 +98,7 @@ class Comment implements ArrayAccess
         'body' => 'getBody',
         'date' => 'getDate',
         'url' => 'getUrl',
+        'reply_to' => 'getReplyTo',
         'thread' => 'getThread'
     );
   
@@ -130,6 +134,12 @@ class Comment implements ArrayAccess
     protected $url;
     
     /**
+      * $reply_to 
+      * @var string
+      */
+    protected $reply_to;
+    
+    /**
       * $thread 
       * @var string
       */
@@ -148,6 +158,7 @@ class Comment implements ArrayAccess
             $this->body = $data["body"];
             $this->date = $data["date"];
             $this->url = $data["url"];
+            $this->reply_to = $data["reply_to"];
             $this->thread = $data["thread"];
         }
     }
@@ -254,6 +265,27 @@ class Comment implements ArrayAccess
     {
         
         $this->url = $url;
+        return $this;
+    }
+    
+    /**
+     * Gets reply_to
+     * @return string
+     */
+    public function getReplyTo()
+    {
+        return $this->reply_to;
+    }
+  
+    /**
+     * Sets reply_to
+     * @param string $reply_to 
+     * @return $this
+     */
+    public function setReplyTo($reply_to)
+    {
+        
+        $this->reply_to = $reply_to;
         return $this;
     }
     
