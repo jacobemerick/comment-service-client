@@ -134,7 +134,7 @@ class DefaultApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
   
         // query params
         
@@ -237,7 +237,7 @@ class DefaultApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
   
         
         
@@ -344,7 +344,7 @@ class DefaultApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
   
         // query params
         
@@ -554,7 +554,7 @@ class DefaultApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array());
   
         
         
